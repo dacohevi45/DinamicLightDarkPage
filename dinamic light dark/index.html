@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--barra de navegacion-->
+    <header>
+        <nav>
+            <a href="#" class="logo">DCH WEB DEV</a>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">WORK</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <div class="theme-toggle-btn">
+                <img src="sun.png" alt="">
+                <img src="moon.png" alt="">
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!--cotenido-->
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="left">
+                    <h1>Light / Dark <span>Theme</span></h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem ad mollitia unde minima, nostrum assumenda impedit placeat! Quis tempora architecto a ipsum veniam, recusandae, obcaecati sapiente inventore illum dignissimos unde?</p>
+                    <button>about me</button>
+                </div>
+                <div class="right">
+                    <img src="hero.png" alt="">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--js-->
+    <script>
+        let toggleBtn = document.querySelector('.theme-toggle-btn');
+        let body = document.querySelector('body');
+
+        window.onload = function(){
+            const theme = localStorage.getItem('theme') || 'light'
+            if (theme === 'dark'){
+                body.classList.add('dark');
+                toggleBtn.classList.add('dark');
+            }
+        }
+        
+        toggleBtn.addEventListener('click', function () {
+            const isDark = body.classList.contains('dark');
+            body.classList.toggle('dark');
+            toggleBtn.classList.toggle('dark');
+
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        })
+        
+    </script>
+</body>
+</html>
